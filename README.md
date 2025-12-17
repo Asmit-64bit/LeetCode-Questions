@@ -5,20 +5,13 @@ This repository is a collection of my solutions to various LeetCode problems, ca
 ## 📊 Statistics
 | Category | Solved |
 | :--- | :--- |
-| 🟢 Easy | 68 |
+| 🟢 Easy | 69 |
 | 🟡 Medium | 13 |
 | 🔴 Hard | 1 |
-| **Total** | **82** |
+| **Total** | **83** |
 
 ---
 
-## 📚 Problem Sets
-
-| # | Title | Solution | Difficulty | Topic |
-|---|-------|----------|------------|-------|
-| 001 | [Two Sum](https://leetcode.com/problems/two-sum/) | [Python](./solutions/TwoSum.py) | 🟢 Easy | Array, Hash Table |
-| 015 | [3Sum](https://leetcode.com/problems/3sum/) | [C++](./solutions/3Sum.cpp) | 🟡 Medium | Two Pointers |
-| 042 | [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/) | [Java](./solutions/TrappingRainWater.java) | 🔴 Hard | Stack, Dynamic Programming |
 
 ---
 
