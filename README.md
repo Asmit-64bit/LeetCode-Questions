@@ -4,5 +4,4 @@
 ---
 
 ### 📂 Solved Problems
-| # | Title | Language | Difficulty |
-|---|---|---|---|
+(Your synchronized files will appear in the file tree above)
