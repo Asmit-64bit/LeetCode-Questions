@@ -3,5 +3,5 @@
 ### 📊 Performance Stats
 ---
 
-### 📂 Solved Problems
-(Your synchronized files will appear in the file tree above)
+### 📂 Solved Questions
+(Your files will be synced in the folders above)
