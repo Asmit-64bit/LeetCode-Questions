@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # STEP 1: Sync all languages (TS, Rust, Go, JS, etc.)
+      # STEP 1: Sync ALL languages (JS, TS, Rust, Go, etc.)
       - name: Sync Code Files
         uses: LeetCode-OpenSource/leetcode-sync@v1.1
         with:
@@ -23,10 +23,9 @@ jobs:
           leetcode-session: ${{ secrets.LEETCODE_SESSION }}
           leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
           filter-duplicate-solutions: true
-          # This organizes your files into folders by language!
-          destination-folder: "solutions" 
+          destination-folder: "solutions" # This avoids a messy root folder
 
-      # STEP 2: Custom Python Stats Updater
+      # STEP 2: Custom Python Stats Updater (Reliable & Permanent)
       - name: Update README Stats
         run: |
           python -c "
@@ -58,5 +57,5 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add .
-          git commit -m "Sync: Multi-language solutions (Rust/Go/TS) and Stats updated" || echo "No changes"
+          git commit -m \"Sync: Added solutions (JS/TS/Rust/Go) and updated stats\" || echo \"No changes\"
           git push

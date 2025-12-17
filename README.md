@@ -1,11 +1,7 @@
-# ⚡ LeetCode Mastery (Asmit_S)
+# ⚡ LeetCode Journey
 
 ### 📊 Performance Stats
 ---
 
-### 📖 Solutions by Language
-* [🦀 Rust](./solutions/rust)
-* [🐹 Golang](./solutions/golang)
-* [📘 TypeScript](./solutions/typescript)
-* [🟨 JavaScript](./solutions/javascript)
-* [🐍 Python](./solutions/python)
+### 📂 Solutions Folder
+All my solved problems in JavaScript, TypeScript, Rust, and Go can be found in the [solutions](./solutions) directory.
