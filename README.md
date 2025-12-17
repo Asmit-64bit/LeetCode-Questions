@@ -5,10 +5,10 @@ This repository is a collection of my solutions to various LeetCode problems, ca
 ## 📊 Statistics
 | Category | Solved |
 | :--- | :--- |
-| 🟢 Easy | 0 |
-| 🟡 Medium | 0 |
-| 🔴 Hard | 0 |
-| **Total** | **0** |
+| 🟢 Easy | 68 |
+| 🟡 Medium | 13 |
+| 🔴 Hard | 1 |
+| **Total** | **82** |
 
 ---
 
