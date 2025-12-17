@@ -15,30 +15,41 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # STEP 1: Sync Code Files (This repo is stable)
+      # STEP 1: Sync all languages (TS, Rust, Go, JS, etc.)
       - name: Sync Code Files
-        uses: dos-m0nk3y/LeetCode-Synchronizer@v1.1.0
+        uses: LeetCode-OpenSource/leetcode-sync@v1.1
         with:
-          GITHUB_TOKEN: ${{ github.token }}
-          LEETCODE_SESSION: ${{ secrets.LEETCODE_SESSION }}
-          LEETCODE_CSRF_TOKEN: ${{ secrets.LEETCODE_CSRF_TOKEN }}
+          github-token: ${{ github.token }}
+          leetcode-session: ${{ secrets.LEETCODE_SESSION }}
+          leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
+          filter-duplicate-solutions: true
+          # This organizes your files into folders by language!
+          destination-folder: "solutions" 
 
-      # STEP 2: Custom Python Stats Updater (No external Action needed!)
+      # STEP 2: Custom Python Stats Updater
       - name: Update README Stats
         run: |
           python -c "
           import requests
           import re
+          import os
 
           user = 'Asmit_S'
-          resp = requests.get(f'https://leetcode-stats-api.herokuapp.com/{user}').json()
-          if resp['status'] == 'success':
-              stats = f'\n| Difficulty | Solved | Total |\n| :--- | :--- | :--- |\n| 🟢 Easy | {resp[\"easySolved\"]} | {resp[\"totalEasy\"]} |\n| 🟡 Medium | {resp[\"mediumSolved\"]} | {resp[\"totalMedium\"]} |\n| 🔴 Hard | {resp[\"hardSolved\"]} | {resp[\"totalHard\"]} |\n| **Total** | **{resp[\"totalSolved\"]}** | **{resp[\"totalQuestions\"]}** |\n'
-              with open('README.md', 'r') as f:
-                  content = f.read()
-              new_content = re.sub(r'.*?', f'{stats}', content, flags=re.DOTALL)
-              with open('README.md', 'w') as f:
-                  f.write(new_content)
+          try:
+              resp = requests.get(f'https://leetcode-stats-api.herokuapp.com/{user}').json()
+              if resp.get('status') == 'success':
+                  stats = f'\n| Difficulty | Solved | Total |\n| :--- | :--- | :--- |\n| 🟢 Easy | {resp[\"easySolved\"]} | {resp[\"totalEasy\"]} |\n| 🟡 Medium | {resp[\"mediumSolved\"]} | {resp[\"totalMedium\"]} |\n| 🔴 Hard | {resp[\"hardSolved\"]} | {resp[\"totalHard\"]} |\n| **Total** | **{resp[\"totalSolved\"]}** | **{resp[\"totalQuestions\"]}** |\n'
+                  
+                  if os.path.exists('README.md'):
+                      with open('README.md', 'r') as f:
+                          content = f.read()
+                      pattern = r'.*?'
+                      replacement = f'{stats}'
+                      new_content = re.sub(pattern, replacement, content, flags=re.DOTALL)
+                      with open('README.md', 'w') as f:
+                          f.write(new_content)
+          except Exception as e:
+              print(f'Error updating stats: {e}')
           "
 
       # STEP 3: Commit and Push
@@ -47,5 +58,5 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add .
-          git commit -m "Sync: Solutions and Stats updated" || echo "No changes"
+          git commit -m "Sync: Multi-language solutions (Rust/Go/TS) and Stats updated" || echo "No changes"
           git push
