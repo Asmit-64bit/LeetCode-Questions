@@ -1,23 +1,8 @@
-![LeetCode Sync](https://github.com/Asmit-64bit/LeetCode-Questions/actions/workflows/leetcode_master.yml/badge.svg)
-# ⚡ LeetCode Mastery
+# ⚡ LeetCode Progress
 
-This repository is a collection of my solutions to various LeetCode problems, categorized by difficulty and topic. I use this space to track my progress in Data Structures and Algorithms (DSA).
-
+### 📊 Performance Stats
 ---
 
-## 📚 Problem Sets
-(Your table of solutions goes here)
-
----
-
-## 📂 Recent Submissions
-(The code sync will populate your folders automatically)
-
----
-
-## 🛠️ Tech Stack
-* **Primary Language:** JavaScript / C++ / Python3 / TypeScript
-* **Tools:** VS Code, LeetCode Sync (GitHub Action)
-
-## 🔗 Links
-* **LeetCode Profile:** [Asmit S](https://leetcode.com/u/Asmit_S/)
+### 📂 Solved Problems
+| # | Title | Language | Difficulty |
+|---|---|---|---|
