@@ -4,4 +4,3 @@
 ---
 
 ### 📂 Solved Questions
-(Your files will be synced in the folders above)

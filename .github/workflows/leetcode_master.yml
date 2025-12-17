@@ -15,7 +15,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # STEP 1: Sync Code Files
+      # STEP 1: Sync Code Files (This repo is stable)
       - name: Sync Code Files
         uses: dos-m0nk3y/LeetCode-Synchronizer@v1.1.0
         with:
@@ -23,11 +23,23 @@ jobs:
           LEETCODE_SESSION: ${{ secrets.LEETCODE_SESSION }}
           LEETCODE_CSRF_TOKEN: ${{ secrets.LEETCODE_CSRF_TOKEN }}
 
-      # STEP 2: Update README Stats (Fixed & Verified Repo)
+      # STEP 2: Custom Python Stats Updater (No external Action needed!)
       - name: Update README Stats
-        uses: gautamkrishnar/leetcode-stats-action@master
-        with:
-          username: Asmit_S
+        run: |
+          python -c "
+          import requests
+          import re
+
+          user = 'Asmit_S'
+          resp = requests.get(f'https://leetcode-stats-api.herokuapp.com/{user}').json()
+          if resp['status'] == 'success':
+              stats = f'\n| Difficulty | Solved | Total |\n| :--- | :--- | :--- |\n| 🟢 Easy | {resp[\"easySolved\"]} | {resp[\"totalEasy\"]} |\n| 🟡 Medium | {resp[\"mediumSolved\"]} | {resp[\"totalMedium\"]} |\n| 🔴 Hard | {resp[\"hardSolved\"]} | {resp[\"totalHard\"]} |\n| **Total** | **{resp[\"totalSolved\"]}** | **{resp[\"totalQuestions\"]}** |\n'
+              with open('README.md', 'r') as f:
+                  content = f.read()
+              new_content = re.sub(r'.*?', f'{stats}', content, flags=re.DOTALL)
+              with open('README.md', 'w') as f:
+                  f.write(new_content)
+          "
 
       # STEP 3: Commit and Push
       - name: Commit and Push
@@ -35,5 +47,5 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add .
-          git commit -m "Sync: Updated solutions and stats" || echo "No changes to commit"
+          git commit -m "Sync: Solutions and Stats updated" || echo "No changes"
           git push
