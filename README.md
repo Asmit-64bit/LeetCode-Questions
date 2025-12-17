@@ -23,7 +23,7 @@ This repository is a collection of my solutions to various LeetCode problems, ca
 ---
 
 ## 🛠️ Tech Stack
-* **Primary Language:** Python / C++ / Java
+* **Primary Language:** JavaScript / C++ / Python3 / TypeScript
 * **Tools:** VS Code, LeetCode Sync (GitHub Action)
 
 ## 🔗 Links
