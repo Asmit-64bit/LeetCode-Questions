@@ -15,8 +15,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # STEP 1: Sync and Organize Files
-      # This will put files in folders based on language (e.g., Python/TwoSum.py)
+      # STEP 1: Sync Code Files
       - name: Sync Code Files
         uses: dos-m0nk3y/LeetCode-Synchronizer@v1.1.0
         with:
@@ -24,16 +23,17 @@ jobs:
           LEETCODE_SESSION: ${{ secrets.LEETCODE_SESSION }}
           LEETCODE_CSRF_TOKEN: ${{ secrets.LEETCODE_CSRF_TOKEN }}
 
-      # STEP 2: Update README Stats (Using a working repository)
+      # STEP 2: Update README Stats (Fixed & Verified Repo)
       - name: Update README Stats
         uses: gautamkrishnar/leetcode-stats-action@master
         with:
           username: Asmit_S
 
+      # STEP 3: Commit and Push
       - name: Commit and Push
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add .
-          git commit -m "Sync: Organized by language & updated stats" || echo "No changes to commit"
+          git commit -m "Sync: Updated solutions and stats" || echo "No changes to commit"
           git push
