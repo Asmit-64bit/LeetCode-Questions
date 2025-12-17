@@ -1,3 +1,4 @@
+![LeetCode Sync](https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/actions/workflows/leetcode_master.yml/badge.svg)
 # ⚡ LeetCode Mastery
 
 This repository is a collection of my solutions to various LeetCode problems, categorized by difficulty and topic. I use this space to track my progress in Data Structures and Algorithms (DSA).
