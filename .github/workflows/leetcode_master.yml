@@ -15,6 +15,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      # This step downloads your code files into folders (e.g., /problems/Two-Sum.py)
       - name: Sync Code Files
         uses: dos-m0nk3y/LeetCode-Synchronizer@v1.1.0
         with:
@@ -22,8 +23,9 @@ jobs:
           LEETCODE_SESSION: ${{ secrets.LEETCODE_SESSION }}
           LEETCODE_CSRF_TOKEN: ${{ secrets.LEETCODE_CSRF_TOKEN }}
 
+      # This step fills in the 📊 Performance Stats section
       - name: Update README Stats
-        uses: joshcai/leetcode-stats-github-action@v1.3.1
+        uses: joshcai/leetcode-stats@v1.1
         with:
           LEETCODE_USERNAME: Asmit_S
 
@@ -32,5 +34,5 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add .
-          git commit -m "LeetCode Master Sync: Updated code and stats" || echo "No changes to commit"
+          git commit -m "Updated solved questions and stats" || echo "No changes to commit"
           git push
