@@ -4,11 +4,18 @@
  * @return {number}
  */
 var myPow = function(x, n) {
+    let num = n;
+    if (num === 0) return 1;
+    if (num < 0) {
+        num = -num;
+    }
     let res = 1;
-        while (n) {
-            if (n % 2) res = n > 0 ? res * x : res / x;
-            x = x * x;
-            n/=2;
+    while (num > 0) {
+        if (num % 2 === 1) {
+            res = res * x;
         }
-        return res;
+        x = x * x;
+        num = Math.floor(num / 2);
+    }    
+    return n < 0 ? 1 / res : res;
 };
