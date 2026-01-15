@@ -7,6 +7,7 @@ A string is represented by an array of strings if the concatenation of all the s
 
 ## Example 1
 **Input:** `word1 = ["ab", "c"]`, `word2 = ["a", "bc"]`  
+**Difficulty:** Easy
 **Output:** `true`  
 **Explanation:** `"ab" + "c" = "abc"` and `"a" + "bc" = "abc"`
 
@@ -22,14 +23,3 @@ A string is represented by an array of strings if the concatenation of all the s
 
 ## Approach
 Concatenate all strings in both arrays and compare the results.
-
-## Solution
-```java
-class Solution {
-    public boolean arrayStringsAreEqual(String[] word1, String[] word2) {
-        String s1 = String.join("", word1);
-        String s2 = String.join("", word2);
-        return s1.equals(s2);
-    }
-}
-```
