@@ -7,7 +7,7 @@ This repository is a collection of my solutions to various LeetCode problems, ca
 
 
 ## 🛠️ Tech Stack
-* **Primary Language:** JavaScript / C++ / Python / Java
+* **Primary Language:** JavaScript / C++ / Python(Pandas) / Java
 * **Tools:** VS Code, LeetCode Sync (GitHub Action)
 
 ## 🔗 Links
